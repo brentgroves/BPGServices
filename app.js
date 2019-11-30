@@ -5,7 +5,7 @@ const socketio = require('@feathersjs/socketio');
 const mqtt = require('mqtt');
 const config = require('../Config13318/config.json');
 const Kep13318 = require('./Kep13318');
-const Plex13318 = require('./Plex13318');
+const Plex13318 = require('./Sproc13318');
 
 // Initialize a Feathers app
 const app = feathers();
@@ -38,7 +38,7 @@ app.service('Kep13318').create({
 });
 // For good measure let's create a message
 // So our API doesn't look so empty
-app.service('Plex13318').create({
+app.service('Sproc13318').create({
   text: 'Hello world from the server',
 });
 
@@ -50,9 +50,9 @@ mqttClient.on('connect', function() {
       console.log('BPGServices subscribed to: Kep13318');
     }
   });
-  mqttClient.subscribe('Plex13318', function(err) {
+  mqttClient.subscribe('Sproc13318', function(err) {
     if (!err) {
-      console.log('BPGServices subscribed to: Plex13318');
+      console.log('BPGServices subscribed to: Sproc13318');
     }
   });
 
