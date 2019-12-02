@@ -1,6 +1,6 @@
 // A messages service that allows to create new
 // and return all existing messages
-class Plex13318 {
+class Sproc13318 {
   constructor() {
     this.messages = [];
   }
@@ -27,5 +27,5 @@ class Plex13318 {
 
 // now we export the class, so other modules can create Cat objects
 module.exports = {
-    Service: Plex13318
+    Service: Sproc13318
 }

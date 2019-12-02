@@ -5,7 +5,7 @@ const socketio = require('@feathersjs/socketio');
 const mqtt = require('mqtt');
 const config = require('../Config13318/config.json');
 const Kep13318 = require('./Kep13318');
-const Plex13318 = require('./Sproc13318');
+const Sproc13318 = require('./Sproc13318');
 
 // Initialize a Feathers app
 const app = feathers();
@@ -14,7 +14,7 @@ app.configure(socketio());
 // Register an in-memory messages service
 app.use('/Kep13318', new Kep13318.Service());
 // Register an in-memory messages service
-app.use('/Plex13318', new Plex13318.Service());
+app.use('/Sproc13318', new Sproc13318.Service());
 
 // Register a nicer error handler than the default Express one
 //app.use(express.errorHandler());
@@ -69,13 +69,13 @@ mqttClient.on('message', function(topic, message) {
       text: msg,
     });
   }
-  if('Plex13318'==topic){
-    console.log("Plex13318 message")
-    msg = `${p.TransDate}, ${p.Part_No},${p.Serial_No},${p.ProdServer},${p.Quantity},${p.Container_Status}`;
-    app.service('Plex13318').create({
-      text: msg,
-    });
+  if('Sproc13318'==topic){
+    console.log("Sproc13318 message")
+    // msg = `${p.TransDate}, ${p.Part_No},${p.Serial_No},${p.ProdServer},${p.Quantity},${p.Container_Status}`;
+    // app.service('Plex13318').create({
+    //   text: msg,
+    // });
   }
-  console.log(msg);
+//  console.log(msg);
+    console.log(p);
 });
-
