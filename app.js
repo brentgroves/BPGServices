@@ -71,10 +71,11 @@ mqttClient.on('message', function(topic, message) {
   }
   if('Sproc13318'==topic){
     console.log("Sproc13318 message")
+    msg ="Sproc13318 message";
     // msg = `${p.TransDate}, ${p.Part_No},${p.Serial_No},${p.ProdServer},${p.Quantity},${p.Container_Status}`;
-    // app.service('Plex13318').create({
-    //   text: msg,
-    // });
+    app.service('Sproc13318').create({
+       text: msg,
+    });
   }
 //  console.log(msg);
     console.log(p);
