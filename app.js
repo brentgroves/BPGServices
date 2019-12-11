@@ -60,6 +60,7 @@ mqttClient.on('connect', function() {
 // message is a buffer
 mqttClient.on('message', function(topic, message) {
   const p = JSON.parse(message.toString()); // payload is a buffer
+  console.log(p);
   console.log(`Topic is: ${topic}`);
   let msg;
   if('Kep13318'==topic){
@@ -70,13 +71,11 @@ mqttClient.on('message', function(topic, message) {
     });
   }
   if('Sproc13318'==topic){
-    console.log("Sproc13318 message")
-    msg ="Sproc13318 message";
+    console.log(`Sproc13318 message => ${message}`)
     // msg = `${p.TransDate}, ${p.Part_No},${p.Serial_No},${p.ProdServer},${p.Quantity},${p.Container_Status}`;
     app.service('Sproc13318').create({
-       text: msg,
+       text: p,
     });
   }
 //  console.log(msg);
-    console.log(p);
 });
